@@ -1,8 +1,63 @@
 ﻿<%@ Page Title="顧客一覧" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CustomerList.aspx.cs" Inherits="CustomerAction.CustomerList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style2 {
+            width: 800px;
+        }
+        .auto-style3 {
+            width: 65px;
+        }
+        .auto-style4 {
+            width: 40px;
+        }
+        .auto-style5 {
+            width: 160px;
+        }
+        .auto-style6 {
+            width: 130px;
+        }
+        .auto-style7 {
+            width: 115px;
+        }
+        .auto-style8 {
+            width: 56px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT [customerID], [customer_name], [customer_kana], [section], [post], [company_name], [staff_name] FROM [vw_customer_view]"></asp:SqlDataSource>
+    <table class="auto-style2">
+        <tr>
+            <td class="auto-style3">&nbsp;</td>
+            <td class="auto-style4">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td class="auto-style4">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">&nbsp;</td>
+            <td class="auto-style8">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style3">&nbsp;</td>
+            <td class="auto-style4">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td class="auto-style4">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">&nbsp;</td>
+            <td class="auto-style8">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style3">&nbsp;</td>
+            <td class="auto-style4">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td class="auto-style4">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">&nbsp;</td>
+            <td class="auto-style8">&nbsp;</td>
+        </tr>
+    </table>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="customerID" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None">
         <AlternatingRowStyle BackColor="PaleGoldenrod" />
         <Columns>
