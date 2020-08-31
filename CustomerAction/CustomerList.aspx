@@ -3,7 +3,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT [customerID], [customer_name], [customer_kana], [section], [post], [company_name], [staff_name] FROM [vw_customer_view]"></asp:SqlDataSource>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="customerID" DataSourceID="SqlDataSource1">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="customerID" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None">
+        <AlternatingRowStyle BackColor="PaleGoldenrod" />
         <Columns>
             <asp:BoundField DataField="customerID" HeaderText="顧客ID" ReadOnly="True" SortExpression="customerID">
             <ItemStyle Width="70px" />
@@ -27,5 +28,13 @@
             <ItemStyle Width="100px" />
             </asp:BoundField>
         </Columns>
+        <FooterStyle BackColor="Tan" />
+        <HeaderStyle BackColor="Tan" Font-Bold="True" />
+        <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+        <SortedAscendingCellStyle BackColor="#FAFAE7" />
+        <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+        <SortedDescendingCellStyle BackColor="#E1DB9C" />
+        <SortedDescendingHeaderStyle BackColor="#C2A47B" />
     </asp:GridView>
 </asp:Content>
