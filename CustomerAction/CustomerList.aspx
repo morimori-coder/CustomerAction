@@ -28,7 +28,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT [customerID], [customer_name], [customer_kana], [section], [post], [company_name], [staff_name] FROM [vw_customer_view]"></asp:SqlDataSource>
     <table class="auto-style2">
         <tr>
-            <td class="auto-style3">&nbsp;</td>
+            <td class="auto-style3">顧客一覧</td>
             <td class="auto-style4">&nbsp;</td>
             <td class="auto-style5">&nbsp;</td>
             <td class="auto-style4">&nbsp;</td>
