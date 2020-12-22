@@ -31,8 +31,12 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT * FROM [vw_customer_view]"></asp:SqlDataSource>
-    <asp:FormView ID="FormView1" runat="server" AllowPaging="True" DataKeyNames="customerID" DataSourceID="SqlDataSource1">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT * FROM [vw_customer_view] WHERE ([customerID] = @customerID)">
+        <SelectParameters>
+            <asp:QueryStringParameter Name="customerID" QueryStringField="id" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:FormView ID="FormView1" runat="server" DataKeyNames="customerID" DataSourceID="SqlDataSource1">
         <EditItemTemplate>
             customerID:
             <asp:Label ID="customerIDLabel1" runat="server" Text='<%# Eval("customerID") %>' />

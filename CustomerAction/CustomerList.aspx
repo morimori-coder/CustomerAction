@@ -80,9 +80,9 @@
             <asp:BoundField DataField="customerID" HeaderText="顧客ID" ReadOnly="True" SortExpression="customerID">
             <ItemStyle Width="70px" />
             </asp:BoundField>
-            <asp:BoundField DataField="customer_name" HeaderText="顧客名" SortExpression="customer_name">
+            <asp:HyperLinkField DataNavigateUrlFields="customerID" DataNavigateUrlFormatString="CustomerCard.aspx?id={0}" DataTextField="customer_name" HeaderText="顧客名">
             <ItemStyle Width="100px" />
-            </asp:BoundField>
+            </asp:HyperLinkField>
             <asp:BoundField DataField="customer_kana" HeaderText="顧客名カナ" SortExpression="customer_kana">
             <ItemStyle Width="120px" />
             </asp:BoundField>
