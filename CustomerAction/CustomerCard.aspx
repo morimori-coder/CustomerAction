@@ -31,10 +31,51 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT * FROM [vw_customer_view] WHERE ([customerID] = @customerID)">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" DeleteCommand="DELETE FROM [tbl_customer] WHERE [customerID] = @customerID" InsertCommand="INSERT INTO [tbl_customer] ([customerID], [customer_name], [customer_kana], [companyID], [section], [post], [zipcode], [address], [tel], [staffID], [first_action_date], [memo], [input_date], [input_staff_name], [update_date], [update_staff_name], [delete_flag]) VALUES (@customerID, @customer_name, @customer_kana, @companyID, @section, @post, @zipcode, @address, @tel, @staffID, @first_action_date, @memo, @input_date, @input_staff_name, @update_date, @update_staff_name, @delete_flag)" SelectCommand="SELECT * FROM [vw_customer_view] WHERE customerID = @customerID" UpdateCommand="UPDATE [tbl_customer] SET [customer_name] = @customer_name, [customer_kana] = @customer_kana, [companyID] = @companyID, [section] = @section, [post] = @post, [zipcode] = @zipcode, [address] = @address, [tel] = @tel, [staffID] = @staffID, [first_action_date] = @first_action_date, [memo] = @memo,  [update_date] = @update_date, [update_staff_name] = @update_staff_name, [delete_flag] = @delete_flag WHERE [customerID] = @customerID">
+        <DeleteParameters>
+            <asp:Parameter Name="customerID" Type="Int32" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:Parameter Name="customerID" Type="Int32" />
+            <asp:Parameter Name="customer_name" Type="String" />
+            <asp:Parameter Name="customer_kana" Type="String" />
+            <asp:Parameter Name="companyID" Type="Int32" />
+            <asp:Parameter Name="section" Type="String" />
+            <asp:Parameter Name="post" Type="String" />
+            <asp:Parameter Name="zipcode" Type="String" />
+            <asp:Parameter Name="address" Type="String" />
+            <asp:Parameter Name="tel" Type="String" />
+            <asp:Parameter Name="staffID" Type="Int32" />
+            <asp:Parameter Name="first_action_date" Type="DateTime" />
+            <asp:Parameter Name="memo" Type="String" />
+            <asp:Parameter Name="input_date" Type="DateTime" />
+            <asp:Parameter Name="input_staff_name" Type="String" />
+            <asp:Parameter Name="update_date" Type="DateTime" />
+            <asp:Parameter Name="update_staff_name" Type="String" />
+            <asp:Parameter Name="delete_flag" Type="Boolean" />
+        </InsertParameters>
         <SelectParameters>
-            <asp:QueryStringParameter Name="customerID" QueryStringField="id" Type="Int32" />
+            <asp:QueryStringParameter Name="customerID" QueryStringField="id" />
         </SelectParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="customer_name" Type="String" />
+            <asp:Parameter Name="customer_kana" Type="String" />
+            <asp:Parameter Name="companyID" Type="Int32" />
+            <asp:Parameter Name="section" Type="String" />
+            <asp:Parameter Name="post" Type="String" />
+            <asp:Parameter Name="zipcode" Type="String" />
+            <asp:Parameter Name="address" Type="String" />
+            <asp:Parameter Name="tel" Type="String" />
+            <asp:Parameter Name="staffID" Type="Int32" />
+            <asp:Parameter Name="first_action_date" Type="DateTime" />
+            <asp:Parameter Name="memo" Type="String" />
+            <asp:Parameter Name="input_date" Type="DateTime" />
+            <asp:Parameter Name="input_staff_name" Type="String" />
+            <asp:Parameter Name="update_date" Type="DateTime" />
+            <asp:Parameter Name="update_staff_name" Type="String" />
+            <asp:Parameter Name="delete_flag" Type="Boolean" />
+            <asp:Parameter Name="customerID" Type="Int32" />
+        </UpdateParameters>
     </asp:SqlDataSource>
     <asp:FormView ID="FormView1" runat="server" DataKeyNames="customerID" DataSourceID="SqlDataSource1">
         <EditItemTemplate>
