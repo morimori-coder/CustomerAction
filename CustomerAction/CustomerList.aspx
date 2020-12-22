@@ -26,7 +26,12 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT [customerID], [customer_name], [customer_kana], [section], [post], [company_name], [staff_name] FROM [vw_customer_view]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT [customerID], [customer_name], [customer_kana], [section], [post], [company_name], [staff_name] FROM [vw_customer_view] WHERE (([customer_name] LIKE '%' + @customer_name + '%') AND ([company_name] LIKE '%' + @company_name + '%'))">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="CustomerNameTextBox" DefaultValue="%" Name="customer_name" PropertyName="Text" Type="String" />
+            <asp:ControlParameter ControlID="CompanyNameTextBox" DefaultValue="%" Name="company_name" PropertyName="Text" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <table class="auto-style2">
         <tr>
             <td class="auto-style3">顧客一覧</td>
@@ -39,14 +44,24 @@
             <td class="auto-style8">&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style3">&nbsp;</td>
-            <td class="auto-style4">&nbsp;</td>
-            <td class="auto-style5">&nbsp;</td>
-            <td class="auto-style4">&nbsp;</td>
-            <td class="auto-style5">&nbsp;</td>
-            <td class="auto-style6">&nbsp;</td>
-            <td class="auto-style7">&nbsp;</td>
-            <td class="auto-style8">&nbsp;</td>
+            <td class="auto-style3">検索条件</td>
+            <td class="auto-style4">顧客名</td>
+            <td class="auto-style5">
+                <asp:TextBox ID="CustomerNameTextBox" runat="server" CssClass="imeOn"></asp:TextBox>
+            </td>
+            <td class="auto-style4">会社名</td>
+            <td class="auto-style5">
+                <asp:TextBox ID="CompanyNameTextBox" runat="server" CssClass="imeOn"></asp:TextBox>
+            </td>
+            <td class="auto-style6">
+                <asp:CheckBox ID="MyCustomerCheckBox" runat="server" Text="自分の顧客のみ" />
+            </td>
+            <td class="auto-style7">
+                <asp:Button ID="FilterButton" runat="server" Text="フィルター実行" Width="110px" />
+            </td>
+            <td class="auto-style8">
+                <asp:HyperLink ID="HyperLink1" runat="server">新規追加</asp:HyperLink>
+            </td>
         </tr>
         <tr>
             <td class="auto-style3">&nbsp;</td>
@@ -84,6 +99,9 @@
             <ItemStyle Width="100px" />
             </asp:BoundField>
         </Columns>
+        <EmptyDataTemplate>
+            該当するデータがありません。<br /> 抽出条件を変更してから[フィルター実行]ボタンをクリックしてください。
+        </EmptyDataTemplate>
         <FooterStyle BackColor="Tan" />
         <HeaderStyle BackColor="Tan" Font-Bold="True" />
         <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
