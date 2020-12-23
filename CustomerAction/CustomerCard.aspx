@@ -28,6 +28,35 @@
         .auto-style6 {
             width: 665px;
         }
+        .auto-style7 {
+            background-color: LightGoldenrodYellow;
+            border: 1px solid Black;
+            width: 267px;
+            height: 16px;
+        }
+        .auto-style8 {
+            background-color: Tan;
+            border: 1px solid Black;
+            width: 130px;
+            height: 15px;
+        }
+        .auto-style9 {
+            background-color: LightGoldenrodYellow;
+            border: 1px solid Black;
+            width: 267px;
+            height: 15px;
+        }
+        .auto-style10 {
+            background-color: Tan;
+            border: 1px solid Black;
+            width: 130px;
+            height: 22px;
+        }
+        .auto-style11 {
+            background-color: LightGoldenrodYellow;
+            border: 1px solid Black;
+            height: 22px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -77,134 +106,168 @@
             <asp:Parameter Name="customerID" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
-    <asp:FormView ID="FormView1" runat="server" DataKeyNames="customerID" DataSourceID="SqlDataSource1">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT * FROM [tbl_company]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT * FROM [tbl_staff]"></asp:SqlDataSource>
+    <asp:FormView ID="FormView1" runat="server" DataKeyNames="customerID" DataSourceID="SqlDataSource1" OnItemCommand="FormView1_ItemCommand">
         <EditItemTemplate>
-            customerID:
-            <asp:Label ID="customerIDLabel1" runat="server" Text='<%# Eval("customerID") %>' />
-            <br />
-            customer_name:
-            <asp:TextBox ID="customer_nameTextBox" runat="server" Text='<%# Bind("customer_name") %>' />
-            <br />
-            customer_kana:
-            <asp:TextBox ID="customer_kanaTextBox" runat="server" Text='<%# Bind("customer_kana") %>' />
-            <br />
-            companyID:
-            <asp:TextBox ID="companyIDTextBox" runat="server" Text='<%# Bind("companyID") %>' />
-            <br />
-            section:
-            <asp:TextBox ID="sectionTextBox" runat="server" Text='<%# Bind("section") %>' />
-            <br />
-            post:
-            <asp:TextBox ID="postTextBox" runat="server" Text='<%# Bind("post") %>' />
-            <br />
-            zipcode:
-            <asp:TextBox ID="zipcodeTextBox" runat="server" Text='<%# Bind("zipcode") %>' />
-            <br />
-            address:
-            <asp:TextBox ID="addressTextBox" runat="server" Text='<%# Bind("address") %>' />
-            <br />
-            tel:
-            <asp:TextBox ID="telTextBox" runat="server" Text='<%# Bind("tel") %>' />
-            <br />
-            staffID:
-            <asp:TextBox ID="staffIDTextBox" runat="server" Text='<%# Bind("staffID") %>' />
-            <br />
-            first_action_date:
-            <asp:TextBox ID="first_action_dateTextBox" runat="server" Text='<%# Bind("first_action_date") %>' />
-            <br />
-            memo:
-            <asp:TextBox ID="memoTextBox" runat="server" Text='<%# Bind("memo") %>' />
-            <br />
-            input_date:
-            <asp:TextBox ID="input_dateTextBox" runat="server" Text='<%# Bind("input_date") %>' />
-            <br />
-            input_staff_name:
-            <asp:TextBox ID="input_staff_nameTextBox" runat="server" Text='<%# Bind("input_staff_name") %>' />
-            <br />
-            update_date:
-            <asp:TextBox ID="update_dateTextBox" runat="server" Text='<%# Bind("update_date") %>' />
-            <br />
-            update_staff_name:
-            <asp:TextBox ID="update_staff_nameTextBox" runat="server" Text='<%# Bind("update_staff_name") %>' />
-            <br />
-            delete_flag:
-            <asp:CheckBox ID="delete_flagCheckBox" runat="server" Checked='<%# Bind("delete_flag") %>' />
-            <br />
-            company_name:
-            <asp:TextBox ID="company_nameTextBox" runat="server" Text='<%# Bind("company_name") %>' />
-            <br />
-            company_kana:
-            <asp:TextBox ID="company_kanaTextBox" runat="server" Text='<%# Bind("company_kana") %>' />
-            <br />
-            staff_name:
-            <asp:TextBox ID="staff_nameTextBox" runat="server" Text='<%# Bind("staff_name") %>' />
-            <br />
-            <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="更新" />
-            &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="キャンセル" />
+            <table class="auto-style2">
+                <tr>
+                    <td class="auto-style3">顧客ID</td>
+                    <td class="auto-style7">
+                        <asp:Label ID="customerIDLabel" runat="server" Text='<%# Eval("customerID") %>' />
+                    </td>
+                    <td class="auto-style3">営業担当者</td>
+                    <td class="auto-style7">
+                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource3" DataTextField="staff_name" DataValueField="staffID" SelectedValue='<%# Bind("staffID") %>'>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style8">顧客カナ</td>
+                    <td class="auto-style9">
+                        <asp:TextBox ID="customer_kanaTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("customer_kana") %>' Width="240px" />
+                    </td>
+                    <td class="auto-style8">初回訪問日</td>
+                    <td class="auto-style9">
+                        <asp:TextBox ID="first_action_dateTextBox" runat="server" CssClass="imeOff" Text='<%# Bind("first_action_date", "{0:yyyy/MM/dd}") %>' Width="80px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style10">顧客名</td>
+                    <td class="auto-style11" colspan="3">
+                        <asp:TextBox ID="customer_nameTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("customer_name") %>' Width="240px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">会社名</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:DropDownList ID="DropDownList1" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource2" DataTextField="company_name" DataValueField="companyID" SelectedValue='<%# Bind("companyID") %>'>
+                            <asp:ListItem Value="0">(選択してください)</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">部署</td>
+                    <td class="tableStyle2">
+                        <asp:TextBox ID="sectionTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("section") %>' Width="240px" />
+                    </td>
+                    <td class="tableStyle1">役職</td>
+                    <td class="tableStyle2">
+                        <asp:TextBox ID="postTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("post") %>' Width="240px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">郵便番号</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:TextBox ID="zipcodeTextBox" runat="server" CssClass="imeOff" Text='<%# Bind("zipcode") %>' Width="80px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">住所</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:TextBox ID="addressTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("address") %>' Width="500px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">TEL</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:TextBox ID="telTextBox" runat="server" CssClass="imeOff" Text='<%# Bind("tel") %>' Width="150px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">備考</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:TextBox ID="memoTextBox" runat="server" CssClass="imeOn" Height="60px" Text='<%# Bind("memo") %>' TextMode="MultiLine" Width="500px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">&nbsp;</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:CheckBox ID="delete_flagCheckBox" runat="server" Checked='<%# Bind("delete_flag") %>' Text="データを削除する場合には、チェックしてから[登録]ボタンをクリックする" Width="500px" />
+                    </td>
+                </tr>
+            </table>
+            &nbsp;<asp:Button ID="Button2" runat="server" CommandName="Update" Text="登録" />
+            <asp:Button ID="Button3" runat="server" CommandName="Cancel" Text="キャンセル" />
         </EditItemTemplate>
         <InsertItemTemplate>
-            customerID:
-            <asp:TextBox ID="customerIDTextBox" runat="server" Text='<%# Bind("customerID") %>' />
-            <br />
-            customer_name:
-            <asp:TextBox ID="customer_nameTextBox" runat="server" Text='<%# Bind("customer_name") %>' />
-            <br />
-            customer_kana:
-            <asp:TextBox ID="customer_kanaTextBox" runat="server" Text='<%# Bind("customer_kana") %>' />
-            <br />
-            companyID:
-            <asp:TextBox ID="companyIDTextBox" runat="server" Text='<%# Bind("companyID") %>' />
-            <br />
-            section:
-            <asp:TextBox ID="sectionTextBox" runat="server" Text='<%# Bind("section") %>' />
-            <br />
-            post:
-            <asp:TextBox ID="postTextBox" runat="server" Text='<%# Bind("post") %>' />
-            <br />
-            zipcode:
-            <asp:TextBox ID="zipcodeTextBox" runat="server" Text='<%# Bind("zipcode") %>' />
-            <br />
-            address:
-            <asp:TextBox ID="addressTextBox" runat="server" Text='<%# Bind("address") %>' />
-            <br />
-            tel:
-            <asp:TextBox ID="telTextBox" runat="server" Text='<%# Bind("tel") %>' />
-            <br />
-            staffID:
-            <asp:TextBox ID="staffIDTextBox" runat="server" Text='<%# Bind("staffID") %>' />
-            <br />
-            first_action_date:
-            <asp:TextBox ID="first_action_dateTextBox" runat="server" Text='<%# Bind("first_action_date") %>' />
-            <br />
-            memo:
-            <asp:TextBox ID="memoTextBox" runat="server" Text='<%# Bind("memo") %>' />
-            <br />
-            input_date:
-            <asp:TextBox ID="input_dateTextBox" runat="server" Text='<%# Bind("input_date") %>' />
-            <br />
-            input_staff_name:
-            <asp:TextBox ID="input_staff_nameTextBox" runat="server" Text='<%# Bind("input_staff_name") %>' />
-            <br />
-            update_date:
-            <asp:TextBox ID="update_dateTextBox" runat="server" Text='<%# Bind("update_date") %>' />
-            <br />
-            update_staff_name:
-            <asp:TextBox ID="update_staff_nameTextBox" runat="server" Text='<%# Bind("update_staff_name") %>' />
-            <br />
-            delete_flag:
-            <asp:CheckBox ID="delete_flagCheckBox" runat="server" Checked='<%# Bind("delete_flag") %>' />
-            <br />
-            company_name:
-            <asp:TextBox ID="company_nameTextBox" runat="server" Text='<%# Bind("company_name") %>' />
-            <br />
-            company_kana:
-            <asp:TextBox ID="company_kanaTextBox" runat="server" Text='<%# Bind("company_kana") %>' />
-            <br />
-            staff_name:
-            <asp:TextBox ID="staff_nameTextBox" runat="server" Text='<%# Bind("staff_name") %>' />
-            <br />
-            <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="挿入" />
-            &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="キャンセル" />
+            <table class="auto-style2">
+                <tr>
+                    <td class="auto-style3">顧客ID</td>
+                    <td class="auto-style7">
+                        <asp:Label ID="customerIDLabel" runat="server" Text='<%# Eval("customerID") %>' />
+                    </td>
+                    <td class="auto-style3">営業担当者</td>
+                    <td class="auto-style7">
+                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource3" DataTextField="staff_name" DataValueField="staffID" SelectedValue='<%# Bind("staffID") %>'>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style8">顧客カナ</td>
+                    <td class="auto-style9">
+                        <asp:TextBox ID="customer_kanaTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("customer_kana") %>' Width="240px" />
+                    </td>
+                    <td class="auto-style8">初回訪問日</td>
+                    <td class="auto-style9">
+                        <asp:TextBox ID="first_action_dateTextBox" runat="server" CssClass="imeOff" Text='<%# Bind("first_action_date", "{0:yyyy/MM/dd}") %>' Width="80px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style10">顧客名</td>
+                    <td class="auto-style11" colspan="3">
+                        <asp:TextBox ID="customer_nameTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("customer_name") %>' Width="240px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">会社名</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:DropDownList ID="DropDownList1" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource2" DataTextField="company_name" DataValueField="companyID" SelectedValue='<%# Bind("companyID") %>'>
+                            <asp:ListItem Value="0">(選択してください)</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">部署</td>
+                    <td class="tableStyle2">
+                        <asp:TextBox ID="sectionTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("section") %>' Width="240px" />
+                    </td>
+                    <td class="tableStyle1">役職</td>
+                    <td class="tableStyle2">
+                        <asp:TextBox ID="postTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("post") %>' Width="240px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">郵便番号</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:TextBox ID="zipcodeTextBox" runat="server" CssClass="imeOff" Text='<%# Bind("zipcode") %>' Width="80px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">住所</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:TextBox ID="addressTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("address") %>' Width="500px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">TEL</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:TextBox ID="telTextBox" runat="server" CssClass="imeOff" Text='<%# Bind("tel") %>' Width="150px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">備考</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:TextBox ID="memoTextBox" runat="server" CssClass="imeOn" Height="60px" Text='<%# Bind("memo") %>' TextMode="MultiLine" Width="500px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableStyle1">&nbsp;</td>
+                    <td class="auto-style5" colspan="3">
+                        <asp:CheckBox ID="delete_flagCheckBox" runat="server" Checked='<%# Bind("delete_flag") %>' Text="データを削除する場合には、チェックしてから[登録]ボタンをクリックする" Width="500px" />
+                    </td>
+                </tr>
+            </table>
         </InsertItemTemplate>
         <ItemTemplate>
             <br />
@@ -224,11 +287,11 @@
             <table class="auto-style2">
                 <tr>
                     <td class="auto-style3">顧客ID</td>
-                    <td class="tableStyle2">
+                    <td class="auto-style7">
                         <asp:Label ID="customerIDLabel" runat="server" Text='<%# Eval("customerID") %>' />
                     </td>
-                    <td class="tableStyle1">営業担当者</td>
-                    <td class="tableStyle2">
+                    <td class="auto-style3">営業担当者</td>
+                    <td class="auto-style7">
                         <asp:Label ID="staff_nameLabel" runat="server" Text='<%# Bind("staff_name") %>' />
                     </td>
                 </tr>
@@ -296,6 +359,7 @@
                 </tr>
             </table>
             <br />
+            <asp:Button ID="Button1" runat="server" CommandName="Edit" Text="編集" />
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/CustomerList.aspx">一覧に戻る</asp:HyperLink>
             <br />
         </ItemTemplate>

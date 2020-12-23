@@ -60,7 +60,7 @@
                 <asp:Button ID="FilterButton" runat="server" Text="フィルター実行" Width="110px" />
             </td>
             <td class="auto-style8">
-                <asp:HyperLink ID="HyperLink1" runat="server">新規追加</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/CustomerCard.aspx">新規追加</asp:HyperLink>
             </td>
         </tr>
         <tr>
