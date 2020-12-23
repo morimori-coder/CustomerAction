@@ -70,7 +70,7 @@ namespace CustomerAction {
 				using (SqlConnection connection = new SqlConnection(connectionString)) 
 				{
 					// SQLステートメントを定義する(現在の顧客IDの最大値＋１を取得)
-					string queryString = "SELECT ISNULL(MAX(custormerID), 0)+1 FROM tbl_customer";
+					string queryString = "SELECT ISNULL(MAX(customerID), 0)+1 FROM tbl_customer";
 
 					// コマンドを定義する
 					SqlCommand command = new SqlCommand(queryString, connection);
@@ -88,7 +88,7 @@ namespace CustomerAction {
 					}
 				}
 			}
-			catch (Exception) 
+			catch (Exception e) 
 			{
 				// 何らかのエラーが発生した(握りつぶす？)
 			}

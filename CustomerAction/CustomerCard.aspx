@@ -120,7 +120,7 @@
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT * FROM [tbl_company]"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT * FROM [tbl_staff]"></asp:SqlDataSource>
-    <asp:FormView ID="FormView1" runat="server" DataKeyNames="customerID" DataSourceID="SqlDataSource1" OnItemCommand="FormView1_ItemCommand">
+    <asp:FormView ID="FormView1" runat="server" DataKeyNames="customerID" DataSourceID="SqlDataSource1" OnItemCommand="FormView1_ItemCommand" OnItemInserting="FormView1_ItemInserting" OnItemUpdating="FormView1_ItemUpdating">
         <EditItemTemplate>
             <table class="auto-style2">
                 <tr>
@@ -313,7 +313,7 @@
                 </tr>
             </table>
             <asp:Button ID="Button4" runat="server" CommandName="Insert" Text="登録" />
-            <asp:Button ID="Button5" runat="server" CommandName="Cancel" Text="キャンセル" />
+            <asp:Button ID="Button5" runat="server" CausesValidation="False" CommandName="Cancel" Text="キャンセル" UseSubmitBehavior="False" />
         </InsertItemTemplate>
         <ItemTemplate>
             <br />
