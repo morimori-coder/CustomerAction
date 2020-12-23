@@ -57,6 +57,18 @@
             border: 1px solid Black;
             height: 22px;
         }
+    .auto-style12 {
+        background-color: Tan;
+        border: 1px solid Black;
+        width: 130px;
+        height: 34px;
+    }
+    .auto-style13 {
+        background-color: LightGoldenrodYellow;
+        border: 1px solid Black;
+        width: 267px;
+        height: 34px;
+    }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -126,6 +138,9 @@
                     <td class="auto-style8">顧客カナ</td>
                     <td class="auto-style9">
                         <asp:TextBox ID="customer_kanaTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("customer_kana") %>' Width="240px" />
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="customer_kanaTextBox" Display="Dynamic" ErrorMessage="必須入力です" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="customer_kanaTextBox" Display="Dynamic" ErrorMessage="20文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,20}"></asp:RegularExpressionValidator>
                     </td>
                     <td class="auto-style8">初回訪問日</td>
                     <td class="auto-style9">
@@ -136,6 +151,9 @@
                     <td class="auto-style10">顧客名</td>
                     <td class="auto-style11" colspan="3">
                         <asp:TextBox ID="customer_nameTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("customer_name") %>' Width="240px" />
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="customer_nameTextBox" Display="Dynamic" ErrorMessage="必須入力です" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="customer_nameTextBox" Display="Dynamic" ErrorMessage="20文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,20}"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
@@ -147,31 +165,41 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="tableStyle1">部署</td>
-                    <td class="tableStyle2">
+                    <td class="auto-style12">部署</td>
+                    <td class="auto-style13">
                         <asp:TextBox ID="sectionTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("section") %>' Width="240px" />
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="sectionTextBox" Display="Dynamic" ErrorMessage="50文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,50}"></asp:RegularExpressionValidator>
                     </td>
-                    <td class="tableStyle1">役職</td>
-                    <td class="tableStyle2">
+                    <td class="auto-style12">役職</td>
+                    <td class="auto-style13">
                         <asp:TextBox ID="postTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("post") %>' Width="240px" />
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="postTextBox" Display="Dynamic" ErrorMessage="30文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,30}"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="tableStyle1">郵便番号</td>
                     <td class="auto-style5" colspan="3">
                         <asp:TextBox ID="zipcodeTextBox" runat="server" CssClass="imeOff" Text='<%# Bind("zipcode") %>' Width="80px" />
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="zipcodeTextBox" ErrorMessage="「000-0000」の書式で入力してください" ForeColor="Red" ValidationExpression="\d{3}(-(\d{4}|\d{2}))?"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="tableStyle1">住所</td>
                     <td class="auto-style5" colspan="3">
                         <asp:TextBox ID="addressTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("address") %>' Width="500px" />
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="addressTextBox" Display="Dynamic" ErrorMessage="100文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,100}"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="tableStyle1">TEL</td>
                     <td class="auto-style5" colspan="3">
                         <asp:TextBox ID="telTextBox" runat="server" CssClass="imeOff" Text='<%# Bind("tel") %>' Width="150px" />
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="telTextBox" Display="Dynamic" ErrorMessage="20文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,20}"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
@@ -188,15 +216,14 @@
                 </tr>
             </table>
             &nbsp;<asp:Button ID="Button2" runat="server" CommandName="Update" Text="登録" />
-            <asp:Button ID="Button3" runat="server" CommandName="Cancel" Text="キャンセル" />
+            <asp:Button ID="Button3" runat="server" CommandName="Cancel" Text="キャンセル" CausesValidation="False" />
         </EditItemTemplate>
         <InsertItemTemplate>
             <table class="auto-style2">
                 <tr>
                     <td class="auto-style3">顧客ID</td>
                     <td class="auto-style7">
-                        <asp:Label ID="customerIDLabel" runat="server" Text='<%# Eval("customerID") %>' />
-                    </td>
+                        (自動付番)</td>
                     <td class="auto-style3">営業担当者</td>
                     <td class="auto-style7">
                         <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource3" DataTextField="staff_name" DataValueField="staffID" SelectedValue='<%# Bind("staffID") %>'>
@@ -207,6 +234,9 @@
                     <td class="auto-style8">顧客カナ</td>
                     <td class="auto-style9">
                         <asp:TextBox ID="customer_kanaTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("customer_kana") %>' Width="240px" />
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="customer_kanaTextBox" Display="Dynamic" ErrorMessage="必須入力です" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server" ControlToValidate="customer_kanaTextBox" Display="Dynamic" ErrorMessage="20文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,20}"></asp:RegularExpressionValidator>
                     </td>
                     <td class="auto-style8">初回訪問日</td>
                     <td class="auto-style9">
@@ -217,6 +247,9 @@
                     <td class="auto-style10">顧客名</td>
                     <td class="auto-style11" colspan="3">
                         <asp:TextBox ID="customer_nameTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("customer_name") %>' Width="240px" />
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="customer_nameTextBox" Display="Dynamic" ErrorMessage="必須入力です" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator11" runat="server" ControlToValidate="customer_nameTextBox" Display="Dynamic" ErrorMessage="20文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,20}"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
@@ -231,28 +264,38 @@
                     <td class="tableStyle1">部署</td>
                     <td class="tableStyle2">
                         <asp:TextBox ID="sectionTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("section") %>' Width="240px" />
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator12" runat="server" ControlToValidate="sectionTextBox" Display="Dynamic" ErrorMessage="50文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,50}"></asp:RegularExpressionValidator>
                     </td>
                     <td class="tableStyle1">役職</td>
                     <td class="tableStyle2">
                         <asp:TextBox ID="postTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("post") %>' Width="240px" />
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator13" runat="server" ControlToValidate="memoTextBox" Display="Dynamic" ErrorMessage="30文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,30}"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="tableStyle1">郵便番号</td>
                     <td class="auto-style5" colspan="3">
                         <asp:TextBox ID="zipcodeTextBox" runat="server" CssClass="imeOff" Text='<%# Bind("zipcode") %>' Width="80px" />
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator14" runat="server" ControlToValidate="zipcodeTextBox" Display="Dynamic" ErrorMessage="「000-0000」の書式で入力してください" ForeColor="Red" ValidationExpression="\d{3}(-(\d{4}|\d{2}))?"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="tableStyle1">住所</td>
                     <td class="auto-style5" colspan="3">
                         <asp:TextBox ID="addressTextBox" runat="server" CssClass="imeOn" Text='<%# Bind("address") %>' Width="500px" />
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator15" runat="server" ControlToValidate="addressTextBox" Display="Dynamic" ErrorMessage="100文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,100}"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="tableStyle1">TEL</td>
                     <td class="auto-style5" colspan="3">
                         <asp:TextBox ID="telTextBox" runat="server" CssClass="imeOff" Text='<%# Bind("tel") %>' Width="150px" />
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator16" runat="server" ControlToValidate="telTextBox" Display="Dynamic" ErrorMessage="20文字以内で入力してください" ForeColor="Red" ValidationExpression=".{0,20}"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
@@ -265,9 +308,12 @@
                     <td class="tableStyle1">&nbsp;</td>
                     <td class="auto-style5" colspan="3">
                         <asp:CheckBox ID="delete_flagCheckBox" runat="server" Checked='<%# Bind("delete_flag") %>' Text="データを削除する場合には、チェックしてから[登録]ボタンをクリックする" Width="500px" />
+                        <br />
                     </td>
                 </tr>
             </table>
+            <asp:Button ID="Button4" runat="server" CommandName="Insert" Text="登録" />
+            <asp:Button ID="Button5" runat="server" CommandName="Cancel" Text="キャンセル" />
         </InsertItemTemplate>
         <ItemTemplate>
             <br />
