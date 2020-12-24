@@ -25,6 +25,8 @@
                     </td>
                     <td>
                         <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/back.gif" />
+                        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
+                        </asp:ScriptManager>
                     </td>
                 </tr>
             </table>
