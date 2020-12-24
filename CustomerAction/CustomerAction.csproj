@@ -72,6 +72,7 @@
     <Content Include="Global.asax" />
     <Content Include="images\back.gif" />
     <Content Include="images\title.gif" />
+    <Content Include="StaffReplace.aspx" />
     <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StaffReplace.aspx.cs">
+      <DependentUpon>StaffReplace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaffReplace.aspx.designer.cs">
+      <DependentUpon>StaffReplace.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
