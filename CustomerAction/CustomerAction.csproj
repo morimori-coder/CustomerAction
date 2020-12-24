@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CustomerCard.aspx" />
+    <Content Include="CustomerExport.aspx" />
     <Content Include="CustomerList.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\back.gif" />
@@ -83,6 +84,13 @@
     </Compile>
     <Compile Include="CustomerCard.aspx.designer.cs">
       <DependentUpon>CustomerCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerExport.aspx.cs">
+      <DependentUpon>CustomerExport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerExport.aspx.designer.cs">
+      <DependentUpon>CustomerExport.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerList.aspx.cs">
       <DependentUpon>CustomerList.aspx</DependentUpon>
