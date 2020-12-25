@@ -21,5 +21,22 @@ namespace CustomerAction {
             // このWebページをキャッシュしないように設定する
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
         }
+
+		protected void FilterButton_Click(object sender, EventArgs e)
+		{
+			// [自分の顧客のみ]チェックボックスの判定
+			if (this.MyCustomerCheckBox.Checked) 
+            {
+                // オンの時
+                // グリッドビューのデータソースとしてSqlDataSource2を設定する
+                this.GridView1.DataSourceID = SqlDataSource2.ID;
+            }
+			else
+			{
+                // オフの時
+                // グリッドビューのデータソースとしてSqlDataSource1を設定する
+                this.GridView1.DataSourceID = SqlDataSource1.ID;
+            }
+		}
 	}
 }

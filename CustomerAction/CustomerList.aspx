@@ -32,6 +32,13 @@
             <asp:ControlParameter ControlID="CompanyNameTextBox" DefaultValue="%" Name="company_name" PropertyName="Text" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:customer_actionConnectionString %>" SelectCommand="SELECT [customerID], [customer_name], [customer_kana], [section], [post], [company_name], [staff_name] FROM [vw_customer_view] WHERE (([customer_name] LIKE '%' + @customer_name + '%') AND ([company_name] LIKE '%' + @company_name + '%') AND ([staffID] = @staffid))">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="CustomerNameTextBox" DefaultValue="%" Name="customer_name" PropertyName="Text" Type="String" />
+            <asp:ControlParameter ControlID="CompanyNameTextBox" DefaultValue="%" Name="company_name" PropertyName="Text" Type="String" />
+            <asp:SessionParameter Name="staffid" SessionField="StaffID" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <table class="auto-style2">
@@ -59,7 +66,7 @@
                         <asp:CheckBox ID="MyCustomerCheckBox" runat="server" Text="自分の顧客のみ" />
                     </td>
                     <td class="auto-style7">
-                        <asp:Button ID="FilterButton" runat="server" Text="フィルター実行" Width="110px" />
+                        <asp:Button ID="FilterButton" runat="server" Text="フィルター実行" Width="110px" OnClick="FilterButton_Click" />
                     </td>
                     <td class="auto-style8">
                         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/CustomerCard.aspx">新規追加</asp:HyperLink>

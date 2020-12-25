@@ -27,7 +27,7 @@ namespace CustomerAction {
 		{
 			// 最終更新日時と最終更新者をセットする
 			e.NewValues["update_date"] = DateTime.Now;
-			e.NewValues["update_staff_name"] = "(---)";
+			e.NewValues["update_staff_name"] = Session["StaffName"];
 		}
 
 		protected void FormView1_ItemInserting(object sender, FormViewInsertEventArgs e)
@@ -42,11 +42,11 @@ namespace CustomerAction {
 
 				// 初回登録日時と初回登録者をセットする
 				e.Values["input_date"] = DateTime.Now;
-				e.Values["input_staff_name"] = "(---)";
+				e.Values["input_staff_name"] = Session["StaffName"];
 
 				// 最終更新日時と最終更新者をセットする
 				e.Values["update_date"] = DateTime.Now;
-				e.Values["update_staff_name"] = "(---)";
+				e.Values["update_staff_name"] = Session["StaffName"];
 			}
 			else 
 			{
