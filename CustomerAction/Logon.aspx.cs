@@ -62,14 +62,19 @@ namespace CustomerAction {
 
 			try
 			{
-				queryString = "SELECT staffID, staff_name, admin_flag FROM tbl_staff" +
-					"WHERE userID ='" + userid.Replace("'", "''") +
+				//queryString = "SELECT staffID, staff_name, admin_flag FROM tbl_staff" +
+				//	"WHERE userID ='" + userid.Replace("'", "''") +
+				//	"' AND password = '" + password.Replace("'", "''") + "' " +
+				//	"COLLATE Japanese_CS_AS_KS_WS";
+
+				queryString = "SELECT staffID, staff_name, admin_flag FROM tbl_staff " +
+					"WHERE userID = '" + userid.Replace("'", "''") +
 					"' AND password = '" + password.Replace("'", "''") + "' " +
 					"COLLATE Japanese_CS_AS_KS_WS";
 
 				// 接続文字列を取得する
 				string connectionString = System.Configuration.ConfigurationManager.
-					ConnectionStrings["customer_actionConnectioinString"].ConnectionString;
+					ConnectionStrings["customer_actionConnectionString"].ConnectionString;
 
 				// コネクションを定義する
 				using (SqlConnection connection = new SqlConnection(connectionString)) 
@@ -103,7 +108,7 @@ namespace CustomerAction {
 					}
 				}
 			} 
-			catch (Exception) 
+			catch (Exception ex) 
 			{
 				// 例外処理(SQLステートメントの実行エラーなど)
 				ret = false;

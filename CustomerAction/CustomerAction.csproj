@@ -78,6 +78,7 @@
     <Content Include="images\back.gif" />
     <Content Include="images\title.gif" />
     <Content Include="Logon.aspx" />
+    <Content Include="Menu.aspx" />
     <Content Include="StaffReplace.aspx" />
     <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
@@ -113,6 +114,13 @@
     </Compile>
     <Compile Include="Logon.aspx.designer.cs">
       <DependentUpon>Logon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
