@@ -62,11 +62,6 @@ namespace CustomerAction {
 
 			try
 			{
-				//queryString = "SELECT staffID, staff_name, admin_flag FROM tbl_staff" +
-				//	"WHERE userID ='" + userid.Replace("'", "''") +
-				//	"' AND password = '" + password.Replace("'", "''") + "' " +
-				//	"COLLATE Japanese_CS_AS_KS_WS";
-
 				queryString = "SELECT staffID, staff_name, admin_flag FROM tbl_staff " +
 					"WHERE userID = '" + userid.Replace("'", "''") +
 					"' AND password = '" + password.Replace("'", "''") + "' " +
