@@ -48,7 +48,7 @@
         </tr>
         <tr>
             <td>
-                <asp:HyperLink ID="HyperLink6" runat="server">スタッフマスター管理</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/StaffManager.aspx">スタッフマスター管理</asp:HyperLink>
             </td>
             <td>&nbsp;</td>
         </tr>

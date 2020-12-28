@@ -23,6 +23,8 @@
             <asp:Parameter Name="staffID" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <asp:Button ID="InsertButton" runat="server" OnClick="InsertButton_Click" Text="スタッフの追加" />
+    <asp:Label ID="MessageLabel" runat="server" EnableViewState="False" ForeColor="Red"></asp:Label>
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" DataKeyNames="staffID" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="None">
         <AlternatingRowStyle BackColor="PaleGoldenrod" />
         <Columns>
