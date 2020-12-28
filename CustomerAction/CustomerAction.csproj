@@ -79,6 +79,7 @@
     <Content Include="images\title.gif" />
     <Content Include="Logon.aspx" />
     <Content Include="Menu.aspx" />
+    <Content Include="StaffManager.aspx" />
     <Content Include="StaffReplace.aspx" />
     <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
@@ -129,6 +130,13 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StaffManager.aspx.cs">
+      <DependentUpon>StaffManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaffManager.aspx.designer.cs">
+      <DependentUpon>StaffManager.aspx</DependentUpon>
     </Compile>
     <Compile Include="StaffReplace.aspx.cs">
       <DependentUpon>StaffReplace.aspx</DependentUpon>
